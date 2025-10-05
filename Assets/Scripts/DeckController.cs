@@ -23,6 +23,8 @@ public class DeckController : MonoBehaviour
     
     [SerializeField] private TextMeshPro CardText;
     [SerializeField] private SpriteRenderer CardPicture;
+    [SerializeField] private SpriteRenderer CardAnswerBackground;
+    [SerializeField] private TextMeshPro CardAnswerText;
     
     private const int RandomCardsNumber = 5;
     
@@ -55,6 +57,17 @@ public class DeckController : MonoBehaviour
         DrawCurrentCard();
         CurrentCardNumber = 0;
     }
+
+    public void HideAnswer()
+    {
+        CardAnswerBackground.gameObject.SetActive(false);
+    }
+
+    public void ShowLeftAnswer()
+    {
+        CardAnswerBackground.gameObject.SetActive(true);
+        CardAnswerText.text = CurrentCard.LeftOptionText;
+    }
     
     public void ChooseLeftOption()
     {
@@ -66,6 +79,12 @@ public class DeckController : MonoBehaviour
         }
         var nextCard = CurrentCard.LeftOptionPossibleContinuations[Random.Range(0, CurrentCard.LeftOptionPossibleContinuations.Length)];
         PlaceNextStoryCard(nextCard);
+    }
+
+    public void ShowRightAnswer()
+    {
+        CardAnswerBackground.gameObject.SetActive(true);
+        CardAnswerText.text = CurrentCard.RightOptionText;
     }
 
     public void ChooseRightOption()
@@ -186,13 +205,17 @@ public class DeckController : MonoBehaviour
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Canava"),
             RightOptionResult = randomResultRight,
             LeftOptionResult = randomResultLeft,
+            LeftOptionText = "Конец",
+            RightOptionText = "Молодец"
         };
         var randomCard = new Card()
         {
             Text = "Налево нажмешь - конец истории получишь. Направо нажмешь - следующую карту получишь",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/PathStoneMeme"),
             LeftOptionPossibleContinuations = Array.Empty<Card>(),
-            RightOptionPossibleContinuations = new[] { randomCardEnd }
+            RightOptionPossibleContinuations = new[] { randomCardEnd },
+            LeftOptionText = "Налево",
+            RightOptionText = "Направо"
         };
 
         var storyResult = new CardResult()
@@ -214,7 +237,9 @@ public class DeckController : MonoBehaviour
             Text = "Это рофлз. Справа еще больше. Слева боюсь рофлзов",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Rofls"),
             ProgressionUnlock = global::Unlockables.Bober,
-            RightOptionPossibleContinuations = new[] { storyCardEnd }
+            RightOptionPossibleContinuations = new[] { storyCardEnd },
+            LeftOptionText = "СТРАШНО",
+            RightOptionText = "БОЛЬШЕ",
         };
 
         var story2Result = new CardResult()
@@ -230,7 +255,9 @@ public class DeckController : MonoBehaviour
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/MgeMachinegunner"),
             ProgressionUnlock = global::Unlockables.Orel,
             LeftOptionResult = story2Result,
-            RightOptionResult = story2Result
+            RightOptionResult = story2Result,
+            LeftOptionText = "ЕЕЕЕЕЕЕЕЕЕЕЕЕЕ",
+            RightOptionText = "РООООООООООООК"
         };
         
         

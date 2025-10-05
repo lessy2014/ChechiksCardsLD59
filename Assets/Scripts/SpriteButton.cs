@@ -2,6 +2,7 @@ using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using System.Collections;
+using TMPro;
 using UnityEngine.Events;
 
 public class SpriteButton: MonoBehaviour, IPointerClickHandler,
@@ -10,6 +11,8 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
 {
 
     public UnityEvent OnClickAction;
+    public UnityEvent OnPointerEnterAction;
+    public UnityEvent OnPointerExitAction;
     void Start()
     {
         //Attach Physics2DRaycaster to the Camera
@@ -29,8 +32,9 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
-    {
-        
+    { 
+        transform.localScale *= 1.2f;
+        OnPointerEnterAction.Invoke();
     }
 
     public virtual void OnPointerUp(PointerEventData eventData)
@@ -39,7 +43,8 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
     }
     public virtual void OnPointerExit(PointerEventData eventData)
     {
-        
+        transform.localScale /= 1.2f;
+        OnPointerExitAction.Invoke();
     }
 
     //Add Event System to the Camera

@@ -21,4 +21,20 @@ public class ItemSlot : SpriteButton
         Destroy(Item.gameObject);
         Item = null;
     }
+
+    public override void OnPointerEnter(PointerEventData eventData)
+    {
+        if (Item is not null)
+        {
+            Item.transform.localScale *= 1.2f;
+        }
+    }
+
+    public override void OnPointerExit(PointerEventData eventData)
+    {
+        if (Item is not null)
+        {
+            Item.transform.localScale /= 1.2f;
+        }
+    }
 }
