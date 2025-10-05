@@ -11,12 +11,15 @@ public class PlayerController : MonoBehaviour
     private const int MaxValue = 100;
     private const int MinValue = 0;
     private const float InterfaceScale = 0.01f;
+    
+    [SerializeField] private ItemSlot[] itemSlots;
 
     public void ChangeHealth(int value)
     {
         health += value;
         if (health <= MinValue)
         {
+            health = MinValue;
             // TODO: reset
         }
 
@@ -33,6 +36,7 @@ public class PlayerController : MonoBehaviour
         mana += value;
         if (mana <= MinValue)
         {
+            mana = MinValue;
             // TODO: reset
         }
 
@@ -42,6 +46,18 @@ public class PlayerController : MonoBehaviour
         }
         
         DrawMana();
+    }
+
+    public void TryPutItemInInventory(Item item)
+    {
+        foreach (var itemSlot in itemSlots)
+        {
+            if (itemSlot.Item is null)
+            {
+                itemSlot.Item = Instantiate(item, itemSlot.transform);
+                return;
+            }
+        }
     }
 
     private void DrawHealth()

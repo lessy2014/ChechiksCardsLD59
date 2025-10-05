@@ -1,8 +1,8 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
+
+public class Item : MonoBehaviour
 {
-    public class Item
-    {
-        public int HpEffect;
-        public int ManaEffect;
-    }
+    public int hpEffect;
+    public int manaEffect;
 }

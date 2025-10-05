@@ -1,10 +1,9 @@
-﻿namespace DefaultNamespace
+﻿using UnityEngine;
+
+public class CardResult
 {
-    public class CardResult
-    {
-        public int Hp;
-        public int Mana;
-        public string Item;
-        public string Unlockable;
-    }
+    public int Hp;
+    public int Mana;
+    public Item Item;
+    public string Unlockable;
 }

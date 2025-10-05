@@ -15,35 +15,35 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
         //Attach Physics2DRaycaster to the Camera
         Camera.main.gameObject.AddComponent<Physics2DRaycaster>();
 
-        addEventSystem();
+        AddEventSystem();
     }
 
-    public void OnPointerClick(PointerEventData eventData)
+    public virtual void OnPointerClick(PointerEventData eventData)
     {
         OnClickAction?.Invoke();
     }
 
-    public void OnPointerDown(PointerEventData eventData)
+    public virtual void OnPointerDown(PointerEventData eventData)
     {
         
     }
 
-    public void OnPointerEnter(PointerEventData eventData)
+    public virtual void OnPointerEnter(PointerEventData eventData)
     {
         
     }
 
-    public void OnPointerUp(PointerEventData eventData)
+    public virtual void OnPointerUp(PointerEventData eventData)
     {
         
     }
-    public void OnPointerExit(PointerEventData eventData)
+    public virtual void OnPointerExit(PointerEventData eventData)
     {
         
     }
 
     //Add Event System to the Camera
-    void addEventSystem()
+    void AddEventSystem()
     {
         GameObject eventSystem = null;
         GameObject tempObj = GameObject.Find("EventSystem");

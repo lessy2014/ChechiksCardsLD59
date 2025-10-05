@@ -1,7 +1,9 @@
 using System;
 using System.Collections.Generic;
-using DefaultNamespace;
+using System.IO;
+using System.Linq;
 using TMPro;
+using UnityEditor;
 using UnityEngine;
 using UnityEngine.Events;
 using UnityEngine.Serialization;
@@ -14,6 +16,7 @@ public class DeckController : MonoBehaviour
     private Card[] RandomStartCards { get; set; }
     private Card[] StoryStartCards { get; set; }
     private HashSet<string> Unlockables { get; set; } = new();
+    private string lastUnlockable = global::Unlockables.Orel;
     
     [SerializeField] private TextMeshPro CardText;
     [SerializeField] private SpriteRenderer CardPicture;
@@ -21,11 +24,13 @@ public class DeckController : MonoBehaviour
     private const int RandomCardsNumber = 5;
     
     [SerializeField] private PlayerController playerController;
+    public Dictionary<string, Item> allItems = new();
     
     void Start()
     {
         CardPicture.color = Color.white;
         
+        ItemsSetup();
         DebugSetup();
     }
     
@@ -62,6 +67,9 @@ public class DeckController : MonoBehaviour
         if (result.Unlockable is not null)
             Unlockables.Add(result.Unlockable);
         
+        if (result.Item is not null)
+            playerController.TryPutItemInInventory(result.Item);
+        
         if (result.Hp != 0)
             playerController.ChangeHealth(result.Hp);
         
@@ -73,7 +81,7 @@ public class DeckController : MonoBehaviour
     {
         // TODO: в одном круге рандомных карт не должно идти одинаковых 
         
-        if (CurrentCardNumber != 0 && CurrentCardNumber % RandomCardsNumber == 0)
+        if (CurrentCardNumber != 0 && CurrentCardNumber % RandomCardsNumber == 0 && !Unlockables.Contains(lastUnlockable))
         {
             CurrentCard = StoryStartCards[Random.Range(0, StoryStartCards.Length)];
             while (CurrentCard.Requirement is not null && !Unlockables.Contains(CurrentCard.Requirement) || Unlockables.Contains(CurrentCard.ProgressionUnlock))
@@ -106,58 +114,73 @@ public class DeckController : MonoBehaviour
         CardPicture.sprite = CurrentCard.Sprite;
     }
 
+    void ItemsSetup()
+    {
+        var assets = Resources.LoadAll<Item>("Prefabs/Items");
+        foreach (var asset in assets)
+        {
+            allItems.Add(asset.name.Split(".prefab")[0], asset);
+        }
+    }
     void DebugSetup()
     {
+        var randomResultRight = new CardResult()
+        {
+            Item = allItems["Mushroom0"]
+        };
+        var randomResultLeft = new CardResult()
+        {
+            Item = allItems["Mushroom1"]
+        };
         var randomCardEnd = new Card
         {
             Text = "Вот и сказочке конец, что бы ни выбрал - молодец",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/Canava")
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/Canava"),
+            RightOptionResult = randomResultRight,
+            LeftOptionResult = randomResultLeft,
         };
         var randomCard = new Card()
         {
             Text = "Налево нажмешь - конец истории получишь. Направо нажмешь - следующую карту получишь",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/PathStoneMeme"),
             LeftOptionPossibleContinuations = Array.Empty<Card>(),
-            RightOptionPossibleContinuations = new Card[] { randomCardEnd }
+            RightOptionPossibleContinuations = new[] { randomCardEnd }
         };
 
         var storyResult = new CardResult()
         {
-            Unlockable = DefaultNamespace.Unlockables.Bober,
+            Unlockable = global::Unlockables.Bober,
             Hp = -20,
             Mana = -50,
         };
-        
         var storyCardEnd = new Card()
         {
             Text = "ЭТО СУПЕРРОФЛЗ. ОЧКО",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Rofls"),
-            ProgressionUnlock = DefaultNamespace.Unlockables.Bober,
+            ProgressionUnlock = global::Unlockables.Bober,
             RightOptionResult = storyResult,
             LeftOptionResult = storyResult
         };
-        
         var storyCard = new Card()
         {
             Text = "Это рофлз. Справа еще больше. Слева боюсь рофлзов",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Rofls"),
-            ProgressionUnlock = DefaultNamespace.Unlockables.Bober,
+            ProgressionUnlock = global::Unlockables.Bober,
             RightOptionPossibleContinuations = new[] { storyCardEnd }
         };
 
         var story2Result = new CardResult()
         {
-            Unlockable = DefaultNamespace.Unlockables.Orel,
+            Unlockable = global::Unlockables.Orel,
             Hp = 10,
             Mana = 25,
         };
-        
         var storyCard2 = new Card()
         {
-            Requirement = DefaultNamespace.Unlockables.Bober,
+            Requirement = global::Unlockables.Bober,
             Text = "Если ты здесь, значит прошел рофлз вправо и получил очко. Молодец",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/MgeMachinegunner"),
-            ProgressionUnlock = DefaultNamespace.Unlockables.Orel,
+            ProgressionUnlock = global::Unlockables.Orel,
             LeftOptionResult = story2Result,
             RightOptionResult = story2Result
         };
