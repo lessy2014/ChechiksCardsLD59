@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 
 public class PlayerController : MonoBehaviour
@@ -13,6 +14,8 @@ public class PlayerController : MonoBehaviour
     private const float InterfaceScale = 0.01f;
     
     [SerializeField] private ItemSlot[] itemSlots;
+    
+    [SerializeField] private DeckController deckController;
 
     public void ChangeHealth(int value)
     {
@@ -20,7 +23,7 @@ public class PlayerController : MonoBehaviour
         if (health <= MinValue)
         {
             health = MinValue;
-            // TODO: reset
+            deckController.ResetHealth();
         }
 
         if (health > MaxValue)
@@ -37,7 +40,7 @@ public class PlayerController : MonoBehaviour
         if (mana <= MinValue)
         {
             mana = MinValue;
-            // TODO: reset
+            deckController.ResetMana();
         }
 
         if (mana > MaxValue)

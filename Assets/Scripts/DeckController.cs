@@ -15,6 +15,9 @@ public class DeckController : MonoBehaviour
     private int CurrentCardNumber { get; set; }
     private Card[] RandomStartCards { get; set; }
     private Card[] StoryStartCards { get; set; }
+    
+    private Card HealthResetCard { get; set; }
+    private Card ManaResetCard { get; set; }
     private HashSet<string> Unlockables { get; set; } = new();
     private string lastUnlockable = global::Unlockables.Orel;
     
@@ -31,7 +34,26 @@ public class DeckController : MonoBehaviour
         CardPicture.color = Color.white;
         
         ItemsSetup();
+        ResetCardsSetup();
         DebugSetup();
+    }
+
+    public void ResetHealth()
+    {
+        CurrentCard = HealthResetCard;
+        Reset();
+    }
+
+    public void ResetMana()
+    {
+        CurrentCard = ManaResetCard;
+        Reset();
+    }
+
+    private void Reset()
+    {
+        DrawCurrentCard();
+        CurrentCardNumber = 0;
     }
     
     public void ChooseLeftOption()
@@ -122,6 +144,32 @@ public class DeckController : MonoBehaviour
             allItems.Add(asset.name.Split(".prefab")[0], asset);
         }
     }
+
+    void ResetCardsSetup()
+    {
+        var result = new CardResult()
+        {
+            Hp = 70,
+            Mana = 70
+        };
+
+        HealthResetCard = new Card()
+        {
+            Text = "Это был тяжелый день. Маленько устал",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"),
+            RightOptionResult = result,
+            LeftOptionResult = result,
+        };
+
+        ManaResetCard = new Card()
+        {
+            Text = "Это был долгий день. Маленько приуныл",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/sad gnome"),
+            RightOptionResult = result,
+            LeftOptionResult = result,
+        };
+    }
+    
     void DebugSetup()
     {
         var randomResultRight = new CardResult()

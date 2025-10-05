@@ -628,6 +628,7 @@ MonoBehaviour:
   - {fileID: 601328634}
   - {fileID: 905263635}
   - {fileID: 1624998980}
+  deckController: {fileID: 1528246935}
 --- !u!1 &489316836
 GameObject:
   m_ObjectHideFlags: 0
