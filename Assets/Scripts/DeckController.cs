@@ -19,16 +19,14 @@ public class DeckController : MonoBehaviour
     [SerializeField] private SpriteRenderer CardPicture;
     
     private const int RandomCardsNumber = 5;
+    
+    [SerializeField] private PlayerController playerController;
+    
     void Start()
     {
         CardPicture.color = Color.white;
         
         DebugSetup();
-    }
-    
-    void Update()
-    {
-        
     }
     
     public void ChooseLeftOption()
@@ -60,9 +58,15 @@ public class DeckController : MonoBehaviour
         if (result is null)
             return;
         
-        // TODO: ХП, мана, предмет
+        // TODO: предмет
         if (result.Unlockable is not null)
             Unlockables.Add(result.Unlockable);
+        
+        if (result.Hp != 0)
+            playerController.ChangeHealth(result.Hp);
+        
+        if (result.Mana != 0)
+            playerController.ChangeMana(result.Mana);
     }
 
     void ChooseNextRandomCard()
@@ -119,7 +123,9 @@ public class DeckController : MonoBehaviour
 
         var storyResult = new CardResult()
         {
-            Unlockable = DefaultNamespace.Unlockables.Bober
+            Unlockable = DefaultNamespace.Unlockables.Bober,
+            Hp = -20,
+            Mana = -50,
         };
         
         var storyCardEnd = new Card()
@@ -141,7 +147,9 @@ public class DeckController : MonoBehaviour
 
         var story2Result = new CardResult()
         {
-            Unlockable = DefaultNamespace.Unlockables.Orel
+            Unlockable = DefaultNamespace.Unlockables.Orel,
+            Hp = 10,
+            Mana = 25,
         };
         
         var storyCard2 = new Card()
