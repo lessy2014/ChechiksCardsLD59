@@ -25,7 +25,7 @@ public class DeckSetup
         // ГРИБЫ
         for (var i = 1; i < 4; i++)
         {
-            var name = $"ГРИБ {i}";
+            var name = $"Гриб {i}";
             var mushroomResult = new CardResult()
             {
                 Item = GetItemDebug(name),
@@ -88,7 +88,7 @@ public class DeckSetup
         };
         var caveSneakResult = new CardResult()
         {
-            Item = GetItemDebug("HealthPotion")
+            Item = GetItemDebug("CAVE POTION")
         };
         var caveTeleportResult = new CardResult()
         {
@@ -159,7 +159,7 @@ public class DeckSetup
         };
         var podoroznikResult = new CardResult()
         {
-            Item = GetItemDebug("podoroznik"),
+            Item = GetItemDebug("Podoroznik"),
         };
         var spellCard = new Card()
         {
@@ -252,7 +252,7 @@ public class DeckSetup
         var acceptBlackResult = new CardResult()
         {
             Mana = 10, 
-            Item = GetItemDebug("crystal")
+            Item = GetItemDebug("CRYSTAL")
         };
         var refuseBlackResult = new CardResult()
         {
@@ -339,7 +339,7 @@ public class DeckSetup
         var acceptRedResult = new CardResult()
         {
             Mana = 10,
-            Item = GetItemDebug("bead")
+            Item = GetItemDebug("BEAD")
         };
         var refuseRedResult = new CardResult()
         {
