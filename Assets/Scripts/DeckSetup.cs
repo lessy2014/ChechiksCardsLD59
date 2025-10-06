@@ -26,6 +26,7 @@ public class DeckSetup
         for (var i = 1; i < 4; i++)
         {
             var name = $"Гриб {i}";
+            var fileName = $"ГРИБ {i}";
             var mushroomResult = new CardResult()
             {
                 Item = GetItemDebug(name),
@@ -33,7 +34,7 @@ public class DeckSetup
             var mushroomCard = new Card()
             {
                 Text = "The Forest is massive. There’s so many sounds and it feels truly magical. While walking you stumble upon a patch of mushrooms, growing in a shadow of a tree nearby.",
-                Sprite = Resources.Load<Sprite>($"Arts/CardPictures/{name}"),
+                Sprite = Resources.Load<Sprite>($"Arts/CardPictures/{fileName}"),
                 LeftOptionText = "Pick some mushroom",
                 RightOptionText = "Do nothing",
                 LeftOptionResult = mushroomResult
@@ -466,7 +467,7 @@ public class DeckSetup
         {
             Text =
                 "You enter a room. It's guardsmen room again. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Turn left",
             RightOptionText = "Go straight",
             LeftOptionResult = walkingPenaltyResult,
@@ -477,7 +478,7 @@ public class DeckSetup
         var archives = new Card()
         {
             Text = "You see a room with dozens of scrolls laying around both floor and different tables. Something urges you to open one of the scrolls. The scroll says \n\n“Devs left a map hidden in the summary if you are struggling to find the end point. You are closer than you think! And because we said so we send you back to the guards room (start). Best of luck! <3”\n",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/archives"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Can’t say no to the dev",
             RightOptionText = "Can’t say no to the dev",
             LeftOptionResult = walkingPenaltyResult,
@@ -489,7 +490,7 @@ public class DeckSetup
         {
             Text =
                 "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Summon ants",
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
@@ -948,6 +949,11 @@ public class DeckSetup
         {
             Unlockable = Unlockables.Jaba,
         };
+        var jabaTrueEnding = new Card()
+        {
+            Text = "This is the very end of Chechik studies. Thanks for playing!",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THE END"),
+        };
         var jabaEnding = new Card()
         {
             Text = "You’ve gained the ability to summon a frog!",
@@ -955,7 +961,9 @@ public class DeckSetup
             LeftOptionText = "Kwa-kwa",
             RightOptionText = "Ribbit-ribbit",
             LeftOptionResult = jabaEndingResult,
-            RightOptionResult = jabaEndingResult
+            RightOptionResult = jabaEndingResult,
+            LeftOptionPossibleContinuations = new []{ jabaTrueEnding },
+            RightOptionPossibleContinuations = new []{ jabaTrueEnding },
         };
         var sleep = new Card()
         {
@@ -1177,7 +1185,7 @@ public class DeckSetup
         var healthResetCard = new Card()
         {
             Text = "It was a tough day. I need some rest",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/HP"),
             RightOptionResult = result,
             LeftOptionResult = result,
         };
@@ -1185,7 +1193,7 @@ public class DeckSetup
         var manaResetCard = new Card()
         {
             Text = "It was a long day. I am not ready to push forward",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/sad gnome"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/MP"),
             RightOptionResult = result,
             LeftOptionResult = result,
         };
