@@ -232,15 +232,12 @@ public class DeckSetup
         {
             Hp = -20,
         };
-        Card redAnts = null;
         var blackAnotherSolution = new Card()
         {
             Text = "You do not want the fighting to continue. You remain silent, thinking of a way everything can be fixed. While you were in deep thoughts most of the Black Ants left, thinking you were not going to help. ",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTEI"),
             LeftOptionText = "Maybe speaking with the other side will help?",
             RightOptionText = "Maybe speaking with the other side will help?",
-            LeftOptionPossibleContinuations = new[] { redAnts },
-            RightOptionPossibleContinuations = new[] { redAnts },
         };
         var blackEnd = new Card()
         {
@@ -388,7 +385,7 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new[] { redEnd },
             RightOptionPossibleContinuations = new[] { tryToReason },
         };
-        redAnts = new Card()
+        var redAnts = new Card()
         {
             Text = "You go to the Red Ants anthill. You are met with the presence of Anton - King and General of the Red Ants. \n\n- I Greet you, Wizard of the Forest. We, Red Ants, are in a war with Black Ants. Those cowards don’t want to make it fair, hiding in their small holes, while my ants are suffering trying to breach their defences. If you would lead us we would end this once and for all!\n",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/ANTON"),
@@ -397,6 +394,8 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new[] { helpRed },
             RightOptionPossibleContinuations = new[] { redAnotherSolution }
         };
+        blackAnotherSolution.LeftOptionPossibleContinuations = new[] { redAnts };
+        blackAnotherSolution.RightOptionPossibleContinuations = new[] { redAnts };
         var ant2 = new Card()
         {
             Text =
@@ -442,11 +441,6 @@ public class DeckSetup
 
     private static Card SetupBatStory()
     {
-        Card mainHallFromGuards = null;
-        Card kitchenFromGuards = null;
-        Card kitchenFromMainHall = null;
-        Card servantsRoom = null; 
-        Card kingsQuarters = null;
         var bat0result = new CardResult()
         {
             Mana = -20,
@@ -472,8 +466,6 @@ public class DeckSetup
             RightOptionText = "Go straight",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new[] { kitchenFromGuards },
-            RightOptionPossibleContinuations = new[] { mainHallFromGuards }
         };
         var archives = new Card()
         {
@@ -495,7 +487,6 @@ public class DeckSetup
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new[] { servantsRoom },
             RightOptionPossibleContinuations = new[] { guardsRoomReStart }
         };
         var lightTheRoomResult = new CardResult()
@@ -523,7 +514,7 @@ public class DeckSetup
         };
         var batsResult = new CardResult()
         {
-            Unlockable = Unlockables.Ants
+            Unlockable = Unlockables.Bats
         };
         var batsEnding = new Card()
         {
@@ -597,6 +588,7 @@ public class DeckSetup
             RightOptionPossibleContinuations = new Card[] { lightRoom }
         };
         
+        
         var towerFromKingsQuarters = new Card()
         {
             Text =
@@ -606,10 +598,9 @@ public class DeckSetup
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new[] { kingsQuarters },
             RightOptionPossibleContinuations = new[] { guardsRoomReStart }
         };
-        kingsQuarters = new Card()
+        var kingsQuarters = new Card()
         {
             Text =
                 "It feels like the king was close to his servants as it is his room you are entering next. There’s a huge bed, though it lays barren. You can make out some fancy clothes lying around but nothing else. You’ve never felt this much evil energy. As if its source is in the next room",
@@ -621,7 +612,7 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new[] { throneRoom },
             RightOptionPossibleContinuations = new[] { towerFromKingsQuarters },
         };
-        servantsRoom = new Card()
+        var servantsRoom = new Card()
         {
             Text = "You enter a room with lots of cots lying around. There’s some commonfolk clothes thrown in the mix. It seems like you are in the servants quarters. You feel as if you are almost there. ",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
@@ -629,7 +620,6 @@ public class DeckSetup
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new []{ kingsQuarters },
             RightOptionPossibleContinuations = new []{ servantsTower }
         };
         var library = new Card()
@@ -651,7 +641,6 @@ public class DeckSetup
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new[] { kitchenFromGuards },
             RightOptionPossibleContinuations = new []{ guardsRoomReStart }
         };
         var kitchenFromMainHallTower = new Card()
@@ -662,7 +651,6 @@ public class DeckSetup
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new[] { kitchenFromMainHall },
             RightOptionPossibleContinuations = new [] { guardsRoomReStart }
         };
         var guardsRoomFromMainHall = new Card()
@@ -674,7 +662,6 @@ public class DeckSetup
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            RightOptionPossibleContinuations = new[] { kitchenFromGuards },
         };
         var mainHallFromKitchen = new Card()
         {
@@ -687,7 +674,7 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new Card[] { library },
             RightOptionPossibleContinuations = new Card[] { guardsRoomFromMainHall }
         };
-        kitchenFromGuards = new Card()
+        var kitchenFromGuards = new Card()
         {
             Text = "You enter what seems to be the castle's kitchen. There’s no food here, so you can’t really hope to find a snack here. The evil energy is very faint here. ",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
@@ -707,9 +694,8 @@ public class DeckSetup
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new[] { mainHallFromGuards },
         };
-        kitchenFromMainHall = new Card()
+        var kitchenFromMainHall = new Card()
         {
             Text = "You enter what seems to be the castle's kitchen. There’s no food here, so you can’t really hope to find a snack here. The evil energy is very faint here. ",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
@@ -720,7 +706,7 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new Card[] { guardsRoomFromKitchen },
             RightOptionPossibleContinuations = new Card[] { kitchenFromMainHallTower }
         };
-        mainHallFromGuards = new Card()
+        var mainHallFromGuards = new Card()
         {
             Text = "You enter a large room, with a long dining table sitting right in the middle. You guess it once was a place of joy and good. The evil energy feels closer than before. ",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
@@ -728,7 +714,6 @@ public class DeckSetup
             RightOptionText = "Go straight",
             LeftOptionResult = walkingPenaltyResult,
             RightOptionResult = walkingPenaltyResult,
-            LeftOptionPossibleContinuations = new Card[] { kitchenFromMainHall },
             RightOptionPossibleContinuations = new Card[] { library  }
         };
         var guardsRoomStart = new Card()
@@ -743,6 +728,18 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new[] { kitchenFromGuards },
             RightOptionPossibleContinuations = new[] { mainHallFromGuards }
         };
+        
+        guardsRoomReStart.LeftOptionPossibleContinuations = new[] { kitchenFromGuards };
+        guardsRoomReStart.RightOptionPossibleContinuations = new[] { mainHallFromGuards };
+        servantsTower.LeftOptionPossibleContinuations = new[] { servantsRoom };
+        towerFromKingsQuarters.LeftOptionPossibleContinuations = new[] { kingsQuarters };
+        servantsRoom.LeftOptionPossibleContinuations = new[] { kingsQuarters };
+        kitchenFromGuardsTower.LeftOptionPossibleContinuations = new[] { kitchenFromGuards };
+        kitchenFromMainHallTower.LeftOptionPossibleContinuations = new[] { kitchenFromMainHall };
+        guardsRoomFromMainHall.RightOptionPossibleContinuations = new[] { kitchenFromGuards };
+        guardsRoomFromKitchen.LeftOptionPossibleContinuations = new[] { mainHallFromGuards };
+        mainHallFromGuards.LeftOptionPossibleContinuations = new[] { kitchenFromMainHall };
+        
         var bat11 = new Card()
         {
             Text =
@@ -809,6 +806,8 @@ public class DeckSetup
         {
             Text = "You’ve gained the ability to summon a bear!",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/BEAR END"),
+            LeftOptionResult = bearResult,
+            RightOptionResult = bearResult,
             LeftOptionText = "Bearilliant",
             RightOptionText = "Bearrific",
         };
@@ -1026,7 +1025,6 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new[] { spell },
             RightOptionPossibleContinuations = new[] { jabaSit2 }
         };
-        Card jabaAsk = null;
         var jabaAskAgain = new Card()
         {
             Text = "The frog still sits. Unmoved. You are not sure even if it heard you.",
@@ -1035,10 +1033,9 @@ public class DeckSetup
             RightOptionText = "Sit next to the frog",
             LeftOptionResult = askFrogResult,
             RightOptionResult = sitFrogResult,
-            LeftOptionPossibleContinuations = new[] { jabaAsk },
             RightOptionPossibleContinuations = new[] { jabaSit }
         };
-        jabaAsk = new Card()
+        var jabaAsk = new Card()
         {
             Text = "The frog continues to sit. Unmoved. You are not sure even if it heard you.",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG2"),
@@ -1049,6 +1046,7 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new []{ jabaAskAgain },
             RightOptionPossibleContinuations = new[] { jabaSit }
         };
+        jabaAskAgain.LeftOptionPossibleContinuations = new[] { jabaAsk };
         var jaba3 = new Card()
         {
             Text = "Each step you take makes you feel closer to whatever it is you are looking for. And now, there’s a giant frog sitting in your way. ",
@@ -1063,7 +1061,7 @@ public class DeckSetup
         var jaba2 = new Card()
         {
             Text = "You stumble upon another thorny path. It’s not as bad as the previous one, you think you can pass through with no troubles.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THORNS 2 "),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THORNS 2"),
             LeftOptionText = "Summon bear",
             RightOptionText = "Walk through",
             LeftOptionResult = summonBearResult,
@@ -1109,14 +1107,14 @@ public class DeckSetup
             RightOptionText = "Summon bear",
             LeftOptionResult = walkResult,
             RightOptionResult = summonBearResult,
-            LeftOptionPossibleContinuations = new[] { jaba1 },
-            RightOptionPossibleContinuations = new[] { walk }
+            LeftOptionPossibleContinuations = new[] { walk },
+            RightOptionPossibleContinuations = new[] { jaba1 }
         };
         var jaba0minus = new Card()
         {
             Text =
                 "You are walking near the border of a dark forest, where tree crowns are so close together, that you almost can’t see any light piercing through them. You feel there is something off balance there.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DARK FOREST"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/dark forest"),
             Requirement = Unlockables.Mebeb,
             ProgressionUnlock = Unlockables.Jaba,
             LeftOptionText = "You step into the forest",
