@@ -13,6 +13,7 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
     public UnityEvent OnClickAction;
     public UnityEvent OnPointerEnterAction;
     public UnityEvent OnPointerExitAction;
+    private bool mouseDown;
     void Start()
     {
         //Attach Physics2DRaycaster to the Camera
@@ -23,13 +24,15 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
 
     public virtual void OnPointerClick(PointerEventData eventData)
     {
-        OnClickAction?.Invoke();
-        OnPointerEnterAction.Invoke();
+
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
     {
-        
+        OnClickAction?.Invoke();
+        OnPointerEnterAction.Invoke();
+        mouseDown = true;
+        transform.localScale /= 1.2f;
     }
 
     public virtual void OnPointerEnter(PointerEventData eventData)
@@ -40,7 +43,8 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
 
     public virtual void OnPointerUp(PointerEventData eventData)
     {
-        
+        mouseDown = false;
+        transform.localScale *= 1.2f;
     }
     public virtual void OnPointerExit(PointerEventData eventData)
     {
