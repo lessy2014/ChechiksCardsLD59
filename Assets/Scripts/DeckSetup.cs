@@ -1149,7 +1149,7 @@ public class DeckSetup
 
         var healthResetCard = new Card()
         {
-            Text = "Это был тяжелый день. Маленько устал",
+            Text = "It was a tough day. I need some rest",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"),
             RightOptionResult = result,
             LeftOptionResult = result,
@@ -1157,7 +1157,7 @@ public class DeckSetup
 
         var manaResetCard = new Card()
         {
-            Text = "Это был долгий день. Маленько приуныл",
+            Text = "It was a long day. I am not ready to push forward",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/sad gnome"),
             RightOptionResult = result,
             LeftOptionResult = result,
