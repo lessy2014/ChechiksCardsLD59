@@ -25,7 +25,7 @@ public class DeckSetup
         // ГРИБЫ
         for (var i = 1; i < 4; i++)
         {
-            var name = $"гриб {i}";
+            var name = $"ГРИБ {i}";
             var mushroomResult = new CardResult()
             {
                 Item = GetItemDebug(name),
@@ -50,7 +50,7 @@ public class DeckSetup
         var lakeCard = new Card()
         {
             Text = "You stumble upon a lake, you see how beautiful the sun reflects on the water. Seeing this makes you wish to take a break and admire the majestic view.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Lake"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/LAKE"),
             LeftOptionText = "Take a break",
             RightOptionText = "Continue the journey ",
             LeftOptionResult = lakeResult
@@ -164,13 +164,13 @@ public class DeckSetup
         var spellCard = new Card()
         {
             Text = "The healing spell worked. You lost some of your mana, but the fox is now healthy and definitely grateful to you.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"), //TODO: ИМЯ СПРАЙТА,
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FOX HEALED SPELL"), //TODO: ИМЯ СПРАЙТА,
         };
         var podoroznikCard = new Card()
         {
             Text =
                 "You walk around searching for the healing herbs that grow around in the forest.  After sometime you find some and bring them to the fox. You attend to its wounds. The fox will have to rest for a bit, but now it is alright.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"), //TODO: ИМЯ СПРАЙТА
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FOX HEALED PODOROZNIK"), //TODO: ИМЯ СПРАЙТА
             LeftOptionText = "Take some of the herbs with you",
             RightOptionText = "Continue the journey",
             LeftOptionResult = podoroznikResult
@@ -179,7 +179,7 @@ public class DeckSetup
         {
             Text =
                 "You know a few healing spells that may help the fox, but you are not sure. Maybe you can find something in the forest that will help? ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/tired gnome"), //TODO: ИМЯ СПРАЙТА
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FOX INJURED"), //TODO: ИМЯ СПРАЙТА
             LeftOptionText = "Use the spell",
             RightOptionText = "Find something to help",
             LeftOptionResult = helpFoxSpellResult,
@@ -189,7 +189,7 @@ public class DeckSetup
         var injuredFoxCard = new Card()
         {
             Text = "On your walk through the forest you find an injured fox. There’s no one around you and the fox definitely needs help. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"), //TODO: ИМЯ СПРАЙТА
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/FOX INJURED"),
             LeftOptionText = "Help the fox",
             RightOptionText = "Walk past it",
             RightOptionResult = walkPastResult,
@@ -221,7 +221,7 @@ public class DeckSetup
         var eventEnd = new Card()
         {
             Text = "You receive the ability to summon ants",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTS END"),
             LeftOptionText = "Ant-tastic!",
             RightOptionText = "Splendid",
             LeftOptionResult = eventEndResult,
@@ -235,7 +235,7 @@ public class DeckSetup
         var blackAnotherSolution = new Card()
         {
             Text = "You do not want the fighting to continue. You remain silent, thinking of a way everything can be fixed. While you were in deep thoughts most of the Black Ants left, thinking you were not going to help. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTEI"),
             LeftOptionText = "Maybe speaking with the other side will help?",
             RightOptionText = "Maybe speaking with the other side will help?",
             LeftOptionPossibleContinuations = new[] { redAnts },
@@ -245,7 +245,7 @@ public class DeckSetup
         {
             Text =
                 "The battle begins. Nobody is listening to you and they will not listen to you anytime soon. You pray nobody loses this fight. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/HELP BLACK"),
             LeftOptionText = "There’s nothing I can do for now ",
             RightOptionText = "There’s nothing I can do for now "
         };
@@ -262,7 +262,7 @@ public class DeckSetup
         {
             Text =
                 "Both Anton and Antei follow you on your journey through the field. One step at a time, the life around you blossoms with life, instead of dirt there is now fresh grass, wilted flowers are no longer wilted, flourishing in the sun. The era of peace is here. As a token of gratitude the Black Ants gift you a small crystal that they found sometime ago. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTS GOOD ENDING"),
             LeftOptionText = "Accept the gift",
             RightOptionText = "Refuse the gift",
             LeftOptionResult = acceptBlackResult,
@@ -274,7 +274,7 @@ public class DeckSetup
         {
             Text =
                 "You make a line in the dirt with your staff, grass starts to grow out on its edges.  For Ants it’s like a huge ravine and that makes them stop. You see as the leader of the Red Ants, Anton, makes it closer to the line, Antei doing the same from the other side. Anton speaks up. \n\n- Wizard! We have been fighting for so long that our field, our home, has not felt alive for many moons. We fight because there is nothing else. Will you help us?\n",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/BLACK STOP BATTLE"),
             LeftOptionText = "- Certainly",
             RightOptionText = "Silently cast a spell",
             LeftOptionPossibleContinuations = new[] { blackGoodEnding },
@@ -284,7 +284,7 @@ public class DeckSetup
         {
             Text =
                 "There’s one last chance to try to talk the Black Ants out of the fighting, but you don’t get that chance because they have already climbed down and are in the middle of an intense battle. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/HELP BLACK"),
             LeftOptionText = "Stop them",
             RightOptionText = "Do not stop them",
             LeftOptionPossibleContinuations = new[] { blackStop },
@@ -294,7 +294,7 @@ public class DeckSetup
         {
             Text =
                 "You help the Black Ants cross the field. On the way you see how much nature suffered in this conflict. It must be stopped. When you almost reach Red Ants anthill you see that they are already there and waiting for you. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/HELP BLACK"),
             LeftOptionText = "Set Black Ants down",
             RightOptionText = "Try to reason with both sides",
             LeftOptionPossibleContinuations = new[] { blackEnd },
@@ -303,7 +303,7 @@ public class DeckSetup
         var blackAnts = new Card()
         {
             Text = "You go to the Black Ants anthill. You are met with the presence of Antei - proud King and General of the Black Ants. He’s wearing armor out of some grass and flowers. \n\n- Greetings, o wise one! We are in a conflict with Red Ants. We are not at fault, and our defences are crumbling. Please, help us! Let me and my proud ants use your wisdom.\n",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTEI"),
             LeftOptionText = "Help the ants with negotiations",
             RightOptionText = "Think of another solution",
             LeftOptionPossibleContinuations = new[] { helpBlack },
@@ -317,7 +317,7 @@ public class DeckSetup
         var redAnotherSolution = new Card()
         {
             Text = "You want to stop fighting, not encourage it. The Red Ants did not appreciate your silence and in the end you got bit a few times. Time to speak to the other side of the conflict.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTON"),
             LeftOptionText = "Go speak with the Black Ants",
             RightOptionText = "Go speak with the Black Ants",
             LeftOptionResult = redAnotherSolutionResult,
@@ -328,7 +328,7 @@ public class DeckSetup
         var redEnd = new Card()
         {
             Text = "The fighting begins anew. You can’t tell who’s winning or who’s losing. The only thing you know is that you won’t be able to reconcile the ants at this moment",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/HELP RED"),
             LeftOptionText = "I’ll come back later",
             RightOptionText = "There’s nothing I can do for now"
         };
@@ -349,7 +349,7 @@ public class DeckSetup
         {
             Text =
                 "Both Antei and Anton follow you on your journey through the field. One step at a time, the life around you blossoms with life, instead of dirt there is now fresh grass, wilted flowers are no longer wilted, flourishing in the sun. The era of peace is here. As a token of gratitude the Red Ants gift you a small magical bead that they found sometime ago. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTS GOOD ENDING"),
             LeftOptionText = "Accept the gift ",
             RightOptionText = "Refuse the gift ",
             LeftOptionResult = acceptRedResult,
@@ -361,7 +361,7 @@ public class DeckSetup
         {
             Text =
                 "You make a line in the dirt with your staff, grass starts to grow out on the edges.  For Ants it’s like a huge ravine and that makes them stop. You see as the leader of the Black Ants, Antei, makes it closer to the line, Anton doing the same from the other side. Antei speaks up. \n\n- O wise one, you possess a wonderful gift. Can you make our field bustle with life again? Our flowers wilted, animals left and there is nothing left for us but to fight each other.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/HELP RED"),
             LeftOptionText = "- I can and I will",
             RightOptionText = "Silently cast a spell",
             LeftOptionPossibleContinuations = new[] { redGoodEnding },
@@ -370,7 +370,7 @@ public class DeckSetup
         var tryToReason = new Card()
         {
             Text = "The moment you try to reason and bring both sides to peace, red ants start to bite you, making you drop them. As soon as they reach the ground they charge straight for black ants anthill",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/HELP RED"),
             LeftOptionText = "Stop them",
             RightOptionText = "Do not stop them",
             LeftOptionPossibleContinuations = new[] { redStopBattle },
@@ -380,7 +380,7 @@ public class DeckSetup
         {
             Text =
                 "You decided to help Red Ants. You help a small army of red ants cross the field in the matter of minutes, instead of days it would usually take them. When Black Ants see you, they start to scatter, trying to find anything to protect themselves and their home. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/HELP RED"),
             LeftOptionText = "Set Red Ants down",
             RightOptionText = "Try to reason with both sides",
             RightOptionResult = tryToReasonResult,
@@ -390,7 +390,7 @@ public class DeckSetup
         redAnts = new Card()
         {
             Text = "You go to the Red Ants anthill. You are met with the presence of Anton - King and General of the Red Ants. \n\n- I Greet you, Wizard of the Forest. We, Red Ants, are in a war with Black Ants. Those cowards don’t want to make it fair, hiding in their small holes, while my ants are suffering trying to breach their defences. If you would lead us we would end this once and for all!\n",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/ANTON"),
             LeftOptionText = "Help Red Ants",
             RightOptionText = "Think of another solution",
             LeftOptionPossibleContinuations = new[] { helpRed },
@@ -400,7 +400,7 @@ public class DeckSetup
         {
             Text =
                 "On a closer look you see that there are definitely two sides to this battle. You see ants with red and black markings. Red ones seem a bit more aggressive, while black ones are more defensive. Being so “big” you can’t really understand who is winning. But you know the fighting must be stopped. Who do you talk to first?",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/AntEvent"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTS COLORS"),
             LeftOptionText = "Red Ants",
             RightOptionText = "Black Ants",
             LeftOptionPossibleContinuations = new[] { redAnts },
@@ -409,7 +409,7 @@ public class DeckSetup
         var ant10 = new Card()
         {
             Text = "The Ants do not appreciate a wizard interrupting their feud. You won’t ever tell anyone about (especially your teacher) but ant bites, especially when there’s a LOT of them HURTS and no healing magic can help you.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/ANTS"),
             LeftOptionText = "Ouch…",
             RightOptionText = "Try to speak to the ants, gently",
             LeftOptionResult = ant10Result,
@@ -420,7 +420,7 @@ public class DeckSetup
         var ant1 = new Card()
         {
             Text = "You see that there is something moving on the field. Except that it is something small, hundreds and thousands of small dots, running around the field. You move closer. You see..ants? Ants that are fighting each other. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/ANTS"),
             LeftOptionText = "Stop the fight",
             RightOptionText = "Try to speak to the ants ",
             LeftOptionPossibleContinuations = new Card[] { ant10 },
@@ -429,7 +429,7 @@ public class DeckSetup
         var ant0 = new Card()
         {
             Text = "You walk onto a field. You know this field, it's one of your favourite places to rest between studying and studying. Different flowers grow here. Or rather, they used too. What you see now is a barren field, remaining flowers wilted. Whatever happened to this place? ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"), //TODO: НАЗВАНИЕ ВСЕЙ ИСТОРИИ!!!!!!!!!
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/FIELD"), //TODO: НАЗВАНИЕ ВСЕЙ ИСТОРИИ!!!!!!!!!
             ProgressionUnlock = Unlockables.Ants,
             LeftOptionText = "Inspect the field ",
             RightOptionText = "Continue walking past the field",
@@ -516,7 +516,7 @@ public class DeckSetup
         var run = new Card()
         {
             Text = "Deciding that your life is more important than some evil energy inside the castle you decide to make a run for it. Even if you got lost in the rooms for another hour or so. When you walk past the main gate it closes behind you. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/MAIN GATE"),
             LeftOptionText = "Better luck next time",
             RightOptionText = "Better luck next time"
         };
@@ -527,7 +527,7 @@ public class DeckSetup
         var batsEnding = new Card()
         {
             Text = "You’ve gained the ability to summon a bat!",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/bats"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/BAT END"),
             LeftOptionText = "Battastic!",
             RightOptionText = "Battacular",
             LeftOptionResult = batsResult,
@@ -537,7 +537,7 @@ public class DeckSetup
         {
             Text =
                 "- We really liked watching you from the shadows. You seem like a funny wizard to follow. We will leave the castle alone, if you allow us to help you on your journey.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/ants"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/LIGHT ROOM BATS"),
             LeftOptionText = "I appreciate your help",
             RightOptionText = "I guess?",
             LeftOptionPossibleContinuations = new[] { batsEnding },
@@ -546,7 +546,7 @@ public class DeckSetup
         var ants = new Card()
         {
             Text = "Everyone underestimates ants. When there’s lots of them they are unstoppable. You see how the closest armor suit falls to the ground and you see…bats flying out of it? Bats???? And suddenly all of the armor suits fall to the ground and dozens of bats surround you.\n\n - Choose mercy, Wizard! We are proud bats, led by King Bathoven! We live by laughter, not slaughter. We use cursed armor to lure heroes here and scare them! The caste was like that already when we came. No one suffered ill fate from us.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/ants"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/LIGHT ROOM BATS"),
             LeftOptionText = "",
             RightOptionText = "",
             LeftOptionPossibleContinuations = new []{ antsNext },
@@ -555,7 +555,7 @@ public class DeckSetup
         var lightRoom = new Card()
         {
             Text = "Lighting up the room you can see that it looks like a typical throne room would: fancy, even if shabby carpet, suits of armor standing tall. And the dark figure, sitting on the throne. As soon as light reaches the dark figure it screeches. The next second you see how suits of armor around you come to life. And it is coming for YOUR life.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/LIGHT ROOM ATTACK"),
             LeftOptionText = "Run",
             RightOptionText = "Summon ants",
             RightOptionResult = summonAntsResult,
@@ -565,7 +565,7 @@ public class DeckSetup
         var fight = new Card()
         {
             Text = "You try to fight the darkness with your staff, swinging it around, hoping it would disperse. It does not.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DARK ROOM"),
             LeftOptionText = "Light the whole room",
             RightOptionText = "Light the whole room",
             LeftOptionResult = lightTheRoomResult,
@@ -576,7 +576,7 @@ public class DeckSetup
         var smallLight = new Card()
         {
             Text = "Your staff shines a bit brighter, but it can’t handle the darkness. You see how with each second the light begins to fade more and more.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DARK ROOM"),
             LeftOptionText = "Try to fight the darkness",
             RightOptionText = "Try to cast a better spell",
             LeftOptionResult = fightTheDarknessResult,
@@ -587,7 +587,7 @@ public class DeckSetup
         var throneRoom = new Card()
         {
             Text = "This is it. Once you take a step into the throne room the evil energy surrounds you. It is dark. The darkest you’ve ever felt. You see some dark figure sitting on the throne, but you can’t even make a step without fearing that the dark will consume you.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DARK ROOM"),
             LeftOptionText = "Cast a small light",
             RightOptionText = "Light the whole room",
             LeftOptionResult = smallLightResult,
@@ -600,7 +600,7 @@ public class DeckSetup
         {
             Text =
                 "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Summon ants",
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
@@ -612,7 +612,7 @@ public class DeckSetup
         {
             Text =
                 "It feels like the king was close to his servants as it is his room you are entering next. There’s a huge bed, though it lays barren. You can make out some fancy clothes lying around but nothing else. You’ve never felt this much evil energy. As if its source is in the next room",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kings"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Go left",
             RightOptionText = "Go straight",
             LeftOptionResult = walkingPenaltyResult,
@@ -623,7 +623,7 @@ public class DeckSetup
         servantsRoom = new Card()
         {
             Text = "You enter a room with lots of cots lying around. There’s some commonfolk clothes thrown in the mix. It seems like you are in the servants quarters. You feel as if you are almost there. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/servants"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Turn left",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -634,7 +634,7 @@ public class DeckSetup
         var library = new Card()
         {
             Text = "You enter a library. You see huge shelves left with books for no one to appreciate. The evil energy feels even closer.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/library"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Turn left",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -645,7 +645,7 @@ public class DeckSetup
         var kitchenFromGuardsTower = new Card()
         {
             Text = "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"), 
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"), 
             LeftOptionText = "Summon ants",
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
@@ -656,7 +656,7 @@ public class DeckSetup
         var kitchenFromMainHallTower = new Card()
         {
             Text = "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"), 
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"), 
             LeftOptionText = "Summon ants",
             RightOptionText = "Find a way out",
             LeftOptionResult = walkingPenaltyResult,
@@ -668,7 +668,7 @@ public class DeckSetup
         {
             Text =
                 "You enter a room. It's guardsmen room again. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Go straight",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -678,7 +678,7 @@ public class DeckSetup
         var mainHallFromKitchen = new Card()
         {
             Text = "You enter a large room, with a long dining table sitting right in the middle. You guess it once was a place of joy and good. The evil energy feels closer than before. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
             LeftOptionText = "Go straight",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -689,7 +689,7 @@ public class DeckSetup
         kitchenFromGuards = new Card()
         {
             Text = "You enter what seems to be the castle's kitchen. There’s no food here, so you can’t really hope to find a snack here. The evil energy is very faint here. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
             LeftOptionText = "Go straight",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -701,7 +701,7 @@ public class DeckSetup
         {
             Text =
                 "You enter a room. It's guardsmen room again. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint.",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/DOOR"),
             LeftOptionText = "Turn left",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -711,7 +711,7 @@ public class DeckSetup
         kitchenFromMainHall = new Card()
         {
             Text = "You enter what seems to be the castle's kitchen. There’s no food here, so you can’t really hope to find a snack here. The evil energy is very faint here. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
             LeftOptionText = "Turn left",
             RightOptionText = "Turn right",
             LeftOptionResult = walkingPenaltyResult,
@@ -722,7 +722,7 @@ public class DeckSetup
         mainHallFromGuards = new Card()
         {
             Text = "You enter a large room, with a long dining table sitting right in the middle. You guess it once was a place of joy and good. The evil energy feels closer than before. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DOOR"),
             LeftOptionText = "Turn left",
             RightOptionText = "Go straight",
             LeftOptionResult = walkingPenaltyResult,
@@ -734,7 +734,7 @@ public class DeckSetup
         {
             Text =
                 "You enter a room. By the look of it, it looks like a guardsmen room. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint. ",
-            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/MAIN GATE OPEN"),
             LeftOptionText = "Turn left",
             RightOptionText = "Go straight",
             LeftOptionResult = walkingPenaltyResult,
@@ -746,7 +746,7 @@ public class DeckSetup
         {
             Text =
                 "Walking around the castle you find a ditch. It is mostly dried up, but there’s a certain smell in the air. You use the ditch to get in the castle but your ego (and your boots) suffered some damage. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DITCH"),
             LeftOptionText = "You are in the castle",
             RightOptionText = "You are in the castle",
             LeftOptionResult = bat11AnotherWayResult,
@@ -758,7 +758,7 @@ public class DeckSetup
         {
             Text =
                 "The main gate is closed, but you can see the lever controlling the gates. You can’t reach it with your hands.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/bat0"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/MAIN GATE"),
             LeftOptionText = "Summon ants",
             RightOptionText = "Find another way",
             LeftOptionResult = bat1SummonResult,
@@ -769,7 +769,7 @@ public class DeckSetup
         {
             Text =
                 "The portal brings you straight to the main gate of a grand old castle, forgotten in the Forest for millennia, or even more. Although, right now it does not feel empty or forgotten. There’s something evil inside and it is your job to check it out. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/BAT"), //TODO: ДОБАВИТЬ НАЗВАНИЯ ВСЕЙ ИСТОРИИ
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/MAIN GATE"), //TODO: ДОБАВИТЬ НАЗВАНИЯ ВСЕЙ ИСТОРИИ
             Requirement = Unlockables.Ants,
             ProgressionUnlock = Unlockables.Bats,
             LeftOptionText = "Walk towards main gate",
@@ -798,7 +798,7 @@ public class DeckSetup
         var beadEnding = new Card()
         {
             Text = "You’ve gained the ability to summon a bear!",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/bead"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/BEAR END"),
             LeftOptionText = "Bearilliant",
             RightOptionText = "Bearrific",
         };
@@ -806,7 +806,7 @@ public class DeckSetup
         {
             Text =
                 "The Druid is ecstatic to see its staff. You can see it in his eyes. \n\n- Thank you for your help! As a fellow druid, I can’t just let you go without a reward! Let me teach you the spell of how to summon a bear! \n",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE DRUID 3"),
             LeftOptionText = "Thank you for your wisdom",
             RightOptionText = "I guess if your companions don’t mind",
             LeftOptionPossibleContinuations = new[] { beadEnding },
@@ -816,7 +816,7 @@ public class DeckSetup
         {
             Text =
                 "It does not take long for the bat to return, holding the lost staff in its claws. Even if it almost drops it a few times, you don’t say anything. In the end, you have the staff in your hands.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE BAT DRUID STAFF"),
             LeftOptionText = "Thank you, Bat",
             RightOptionText = "Let’s get it back to its owner",
             LeftOptionPossibleContinuations = new Card[] { wizard },
@@ -825,7 +825,7 @@ public class DeckSetup
         var bat0 = new Card()
         {
             Text = "The Bat appears right beside you, chirping happily. It knows what it needs to do. As it flies away, you sit on a tree stamp nearby and wait.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE BAT DRUID"),
             LeftOptionText = "Wait patiently",
             RightOptionText = "Hum a song",
             RightOptionResult = humResult,
@@ -845,7 +845,7 @@ public class DeckSetup
         var staff = new Card()
         {
             Text = "It’s been almost a day since you started searching for the staff. You are tired, angry and honestly just hungry. Becoming a part of faes prank was not in your daily schedule. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE BAT NIGHT"),
             LeftOptionText = "I guess I have no choice but to summon the bat.",
             RightOptionText = "The wizard will have to find his staff himself, I am leaving.",
             LeftOptionResult = staffToBatResult,
@@ -856,7 +856,7 @@ public class DeckSetup
         {
             Text =
                 "Leaving a cave you know that searching for a lost staff is not that easy. It may take quite some time before the task is finished.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE BAT"),
             LeftOptionText = "I choose you, Bat!",
             RightOptionText = "I will search for the staff myself",
             LeftOptionResult = druid3Result,
@@ -866,7 +866,7 @@ public class DeckSetup
         var druid2 = new Card()
         {
             Text = "- There I was, just wandering about this majestic forest when suddenly, there was a weird flash and I woke up here! I may have been struck by misbehaving faes around here. Who knows! The bears were kind enough to let me rest and catch my breath, but I can’t seem to find my staff! Would you be so kind as to help me?",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid2"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE DRUID 2"),
             LeftOptionText = "It is my job to help my fellow wizard!",
             RightOptionText = "Why is it always me that must help?...",
             LeftOptionPossibleContinuations = new[] { druid3 },
@@ -876,7 +876,7 @@ public class DeckSetup
         {
             Text =
                 "And there the Lone Druid was, surrounded by at least two large brown bears, sitting in the farthest corner of the cave. You can’t see him clearly but feel that he knows you are here. \n\n- Another wizard? How splendid! I was wondering when someone would notice me. Don’t mind my friends, they are just a tad bit protective!",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid1"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE DRUID 2"),
             LeftOptionText = "Greetings!",
             RightOptionText = "Why do wizards always end up in weird situations?",
             LeftOptionPossibleContinuations = new[] { druid2 },
@@ -886,7 +886,7 @@ public class DeckSetup
         {
             Text =
                 "Once you are in a cave you suddenly understand why there’s magic here. Another wizard, a druid, is here. You don’t know who or why, but you feel the need to be cautious.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid0"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE DRUID 1"),
             Requirement = Unlockables.Bats,
             ProgressionUnlock = Unlockables.Mebeb,
             LeftOptionText = "Proceed forth",
@@ -932,7 +932,7 @@ public class DeckSetup
         var jabaEnding = new Card()
         {
             Text = "You’ve gained the ability to summon a frog!",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid0"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG END"),
             LeftOptionText = "Kwa-kwa",
             RightOptionText = "Ribbit-ribbit",
             LeftOptionResult = jabaEndingResult,
@@ -941,7 +941,7 @@ public class DeckSetup
         var sleep = new Card()
         {
             Text = "You wake up feeling well rested. The unease that brought you here is no longer there. You open your eyes and the giant frog is also no longer there. You feel as if it was a lesson in patience.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid0"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/NO FROG"),
             LeftOptionText = "I guess it is time to get out of the black forest",
             RightOptionText = "Never question wisdom of a frog, huh",
             LeftOptionPossibleContinuations = new[] { jabaEnding },
@@ -950,7 +950,7 @@ public class DeckSetup
         var jabaSit3 = new Card()
         {
             Text = "It’s dark now. You feel tired. Your eyes are slowly closing. You need to decide what to do. The frog still has not moved even an inch.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG5"),
             LeftOptionText = "Whatever, I am leaving",
             RightOptionText = "I’ll sleep here",
             RightOptionResult = sleepResult,
@@ -959,7 +959,7 @@ public class DeckSetup
         var bearSummon = new Card()
         {
             Text = "Bear truly tries to move the frog. He fails.The frog gets angry. One moment you are standing next to the frog, the next moment you are literally flying out of the dark forest borders. The frog did not like you.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG LEAVE"),
             LeftOptionText = "Better luck next time",
             RightOptionText = "I guess we were bugging it too much",
             LeftOptionResult = bearSummonEnding,
@@ -968,7 +968,7 @@ public class DeckSetup
         var jabaSit2 = new Card()
         {
             Text = "It’s been hours since you first got here. You’ve been sitting. Just sitting. Nothing is happening around you and you still can’t get past that frog.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG4"),
             LeftOptionText = "Summon a bear",
             RightOptionText = "Continue sitting",
             LeftOptionResult = summonBearResult,
@@ -980,7 +980,7 @@ public class DeckSetup
         var spell = new Card()
         {
             Text = "You try to use a simple spell. It literally bounces back from the frog, moving a nearby log. The frog continues to sit.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG3"),
             LeftOptionText = "Summon a bear",
             RightOptionText = "Continue sitting",
             LeftOptionResult = summonBearResult,
@@ -992,7 +992,7 @@ public class DeckSetup
         {
             Text =
                 "You sit next to the frog. You do not feel anything change. The frog continues to sit in your way, motionless.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG3"),
             LeftOptionText = "Try to move the frog with a spell",
             RightOptionText = "Sit next to the frog",
             RightOptionResult = sitFrogResult,
@@ -1003,7 +1003,7 @@ public class DeckSetup
         var jabaAskAgain = new Card()
         {
             Text = "The frog still sits. Unmoved. You are not sure even if it heard you.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG2"),
             LeftOptionText = "Ask the frog to move ",
             RightOptionText = "Sit next to the frog",
             LeftOptionResult = askFrogResult,
@@ -1014,7 +1014,7 @@ public class DeckSetup
         jabaAsk = new Card()
         {
             Text = "The frog continues to sit. Unmoved. You are not sure even if it heard you.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG2"),
             LeftOptionText = "Ask the frog to move ",
             RightOptionText = "Sit next to the frog",
             LeftOptionResult = askFrogResult,
@@ -1025,7 +1025,7 @@ public class DeckSetup
         var jaba3 = new Card()
         {
             Text = "Each step you take makes you feel closer to whatever it is you are looking for. And now, there’s a giant frog sitting in your way. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/FROG"),
             LeftOptionText = "Ask the frog to move ",
             RightOptionText = "Sit next to the frog",
             LeftOptionResult = askFrogResult,
@@ -1036,7 +1036,7 @@ public class DeckSetup
         var jaba2 = new Card()
         {
             Text = "You stumble upon another thorny path. It’s not as bad as the previous one, you think you can pass through with no troubles.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba2"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THORNS 2 "),
             LeftOptionText = "Summon bear",
             RightOptionText = "Walk through",
             LeftOptionResult = summonBearResult,
@@ -1054,7 +1054,7 @@ public class DeckSetup
         {
             Text =
                 "You feel as if you’ve been walking for hours and not even a step closer to that weird sensation of imbalance you felt earlier. As if the forest does not want you here. Suddenly you walk out on a sunny field. You hear birds, see flowers, as if you were not just in the middle of a dark forest. The path continues forward. Do you follow it?",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba2"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/SUS FIELD"),
             LeftOptionText = "Walk forward",
             RightOptionText = "Go back into the forest",
             LeftOptionResult = walkForwardResult,
@@ -1063,7 +1063,7 @@ public class DeckSetup
         var jaba1 = new Card()
         {
             Text = "Bear manages to strike through all of the thorns, leaving you a nice little path to follow. The search continues.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THORNS 2"),
             LeftOptionText = "Walk forward",
             RightOptionText = "Walk forward",
             LeftOptionPossibleContinuations = new[] { jaba2 },
@@ -1077,7 +1077,7 @@ public class DeckSetup
         {
             Text =
                 "The more you traverse through dark forest, the more it seems impossible to take another step. Your path is blocked by a literal wall of thorns, you don’t believe you can just walk through it. ",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"), //TODO: ПОМЕНЯТЬ НАЗВАНИЕ ВО ВСЕЙ ИСТОРИИ
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THORNS"), //TODO: ПОМЕНЯТЬ НАЗВАНИЕ ВО ВСЕЙ ИСТОРИИ
             Requirement = Unlockables.Mebeb,
             ProgressionUnlock = Unlockables.Jaba,
             LeftOptionText = "Try to walk around the wall",
