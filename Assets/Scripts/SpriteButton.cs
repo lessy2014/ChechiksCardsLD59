@@ -24,6 +24,7 @@ public class SpriteButton: MonoBehaviour, IPointerClickHandler,
     public virtual void OnPointerClick(PointerEventData eventData)
     {
         OnClickAction?.Invoke();
+        OnPointerEnterAction.Invoke();
     }
 
     public virtual void OnPointerDown(PointerEventData eventData)
