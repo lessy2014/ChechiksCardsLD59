@@ -41,8 +41,12 @@ public class DeckController : MonoBehaviour
         var debugCards = DeckSetup.DebugSetup();
         RandomStartCards = debugCards.Item1;
         StoryStartCards = debugCards.Item2;
+        
+        var prologueCard = DeckSetup.PrologueSetup();
+        CurrentCard = prologueCard;
+        DrawCurrentCard();
 
-        ChooseNextRandomCard();
+        // ChooseNextRandomCard();
     }
 
     public void ResetHealth()

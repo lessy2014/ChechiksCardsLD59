@@ -16,12 +16,65 @@ public class DeckSetup
 
     public static Tuple<Card[], Card[]> Setup()
     {
-        throw new Exception();
+        return new Tuple<Card[], Card[]>(RandomCardsSetup(), StoryCardsSetup());
     }
 
     public static Card[] RandomCardsSetup()
     {
         throw new Exception();
+    }
+
+    public static Card[] StoryCardsSetup()
+    {
+        throw new Exception();
+    }
+    /*
+     
+     
+        var cardResult = new CardResult()
+        {
+            Hp = 50,
+            Mana = -50,
+            Item = AllItems["Mushroom0"],
+            Unlockable = Unlockables.Orel
+        };
+        var nextCard = new Card();
+        var card = new Card()
+        {
+            Text = "",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/tired gnome"),
+            Requirement = Unlockables.Bober,
+            ProgressionUnlock = Unlockables.Orel,
+            LeftOptionText = "",
+            RightOptionText = "",
+            LeftOptionResult = cardResult,
+            RightOptionResult = cardResult,
+            LeftOptionPossibleContinuations = new[] { nextCard },
+            RightOptionPossibleContinuations = Array.Empty<Card>()
+        };
+        
+        
+     */
+
+    public static Card PrologueSetup()
+    {
+        var prologue1 = new Card()
+        {
+            Text = "Grand Wizard left at dawn, with comforting parting words \n\n- I believe in you. Trust yourself and the Forest. \n",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/start"),
+            LeftOptionText = "I guess it is time to venture in to the Forest",
+            RightOptionText = "It could not be hard to protect a forest, right?",
+        };
+        var prologue0 = new Card()
+        {
+            Text = "The starry night shines bright. You are sitting near a crackling fire, while your Master, Grand Wizard is waltzing around, picking random, at first sight, amulets and sticks. \n\n- I will be gone for a fortnight only, my young Apprentice. In the meantime, you should go out and learn the ins and outs of the Forest, as one day you’ll be the only one to protect it.\n",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/start"),
+            LeftOptionText = "I understand, Master ",
+            RightOptionText = "Why is it whenever I am given a task, you are always away?",
+            LeftOptionPossibleContinuations = new[] { prologue1 },
+            RightOptionPossibleContinuations = new[] { prologue1 }
+        };
+        return prologue0;
     }
 
     public static Tuple<Card, Card> ResetCardsSetup()
@@ -90,7 +143,7 @@ public class DeckSetup
         {
             Text = "ЭТО СУПЕРРОФЛЗ. ОЧКО",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Rofls"),
-            ProgressionUnlock = global::Unlockables.Bober,
+            ProgressionUnlock = Unlockables.Bober,
             RightOptionResult = storyResult,
             LeftOptionResult = storyResult
         };
