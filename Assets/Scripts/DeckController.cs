@@ -66,7 +66,7 @@ public class DeckController : MonoBehaviour
     private void Reset()
     {
         DrawCurrentCard();
-        CurrentCardNumber = 0;
+        CurrentCardNumber = -1;
     }
 
     public void HideAnswer()
@@ -83,6 +83,11 @@ public class DeckController : MonoBehaviour
     public void ChooseLeftOption()
     {
         ProcessCardResult(CurrentCard.LeftOptionResult);
+        if (CurrentCardNumber == -1)
+        {
+            CurrentCardNumber++;
+            return;
+        }
         if (CurrentCard.LeftOptionPossibleContinuations is null || CurrentCard.LeftOptionPossibleContinuations.Length == 0)
         {
             ChooseNextRandomCard();
@@ -101,6 +106,11 @@ public class DeckController : MonoBehaviour
     public void ChooseRightOption()
     {
         ProcessCardResult(CurrentCard.RightOptionResult);
+        if (CurrentCardNumber == -1)
+        {
+            CurrentCardNumber++;
+            return;
+        }
         if (CurrentCard.RightOptionPossibleContinuations is null || CurrentCard.RightOptionPossibleContinuations.Length == 0)
         {
             ChooseNextRandomCard();
