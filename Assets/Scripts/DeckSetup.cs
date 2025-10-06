@@ -206,6 +206,9 @@ public class DeckSetup
         var stories = new List<Card>();
         
         stories.Add(SetupAntEvent());
+        stories.Add(SetupBatStory());
+        stories.Add(SetupDruidStory());
+        stories.Add(SetupJabaStory());
         
         return stories.ToArray();
     }
@@ -436,6 +439,657 @@ public class DeckSetup
         };
         return ant0;
     }
+
+    private static Card SetupBatStory()
+    {
+        Card mainHallFromGuards = null;
+        Card kitchenFromGuards = null;
+        Card kitchenFromMainHall = null;
+        Card servantsRoom = null; 
+        Card kingsQuarters = null;
+        var bat0result = new CardResult()
+        {
+            Mana = -20,
+        };
+        var bat1SummonResult = new CardResult()
+        {
+            Mana = -30,
+        };
+        var bat11AnotherWayResult = new CardResult()
+        {
+            Mana = -10,
+        };
+        var walkingPenaltyResult = new CardResult()
+        {
+            Hp = -5,
+        };
+        var guardsRoomReStart = new Card()
+        {
+            Text =
+                "You enter a room. It's guardsmen room again. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint. ",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Go straight",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { kitchenFromGuards },
+            RightOptionPossibleContinuations = new[] { mainHallFromGuards }
+        };
+        var archives = new Card()
+        {
+            Text = "You see a room with dozens of scrolls laying around both floor and different tables. Something urges you to open one of the scrolls. The scroll says \n\n“Devs left a map hidden in the summary if you are struggling to find the end point. You are closer than you think! And because we said so we send you back to the guards room (start). Best of luck! <3”\n",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/archives"),
+            LeftOptionText = "Can’t say no to the dev",
+            RightOptionText = "Can’t say no to the dev",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { guardsRoomReStart },
+            RightOptionPossibleContinuations = new[] { guardsRoomReStart },
+        };
+        var servantsTower = new Card()
+        {
+            Text =
+                "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"),
+            LeftOptionText = "Summon ants",
+            RightOptionText = "Find a way out",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { servantsRoom },
+            RightOptionPossibleContinuations = new[] { guardsRoomReStart }
+        };
+        var lightTheRoomResult = new CardResult()
+        {
+            Mana = -20,
+        };
+        var smallLightResult = new CardResult()
+        {
+            Mana = -5
+        };
+        var fightTheDarknessResult = new CardResult()
+        {
+            Hp = -15,
+        };
+        var summonAntsResult = new CardResult()
+        {
+            Mana = -10,
+        };
+        var run = new Card()
+        {
+            Text = "Deciding that your life is more important than some evil energy inside the castle you decide to make a run for it. Even if you got lost in the rooms for another hour or so. When you walk past the main gate it closes behind you. ",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            LeftOptionText = "Better luck next time",
+            RightOptionText = "Better luck next time"
+        };
+        var batsResult = new CardResult()
+        {
+            Unlockable = Unlockables.Ants
+        };
+        var batsEnding = new Card()
+        {
+            Text = "You’ve gained the ability to summon a bat!",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/bats"),
+            LeftOptionText = "Battastic!",
+            RightOptionText = "Battacular",
+            LeftOptionResult = batsResult,
+            RightOptionResult = batsResult,
+        };
+        var antsNext = new Card()
+        {
+            Text =
+                "- We really liked watching you from the shadows. You seem like a funny wizard to follow. We will leave the castle alone, if you allow us to help you on your journey.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/ants"),
+            LeftOptionText = "I appreciate your help",
+            RightOptionText = "I guess?",
+            LeftOptionPossibleContinuations = new[] { batsEnding },
+            RightOptionPossibleContinuations = new[] { batsEnding }
+        };
+        var ants = new Card()
+        {
+            Text = "Everyone underestimates ants. When there’s lots of them they are unstoppable. You see how the closest armor suit falls to the ground and you see…bats flying out of it? Bats???? And suddenly all of the armor suits fall to the ground and dozens of bats surround you.\n\n - Choose mercy, Wizard! We are proud bats, led by King Bathoven! We live by laughter, not slaughter. We use cursed armor to lure heroes here and scare them! The caste was like that already when we came. No one suffered ill fate from us.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/ants"),
+            LeftOptionText = "",
+            RightOptionText = "",
+            LeftOptionPossibleContinuations = new []{ antsNext },
+            RightOptionPossibleContinuations = new []{ antsNext }
+        };
+        var lightRoom = new Card()
+        {
+            Text = "Lighting up the room you can see that it looks like a typical throne room would: fancy, even if shabby carpet, suits of armor standing tall. And the dark figure, sitting on the throne. As soon as light reaches the dark figure it screeches. The next second you see how suits of armor around you come to life. And it is coming for YOUR life.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            LeftOptionText = "Run",
+            RightOptionText = "Summon ants",
+            RightOptionResult = summonAntsResult,
+            LeftOptionPossibleContinuations = new[] { run },
+            RightOptionPossibleContinuations = new[] { ants }
+        };
+        var fight = new Card()
+        {
+            Text = "You try to fight the darkness with your staff, swinging it around, hoping it would disperse. It does not.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            LeftOptionText = "Light the whole room",
+            RightOptionText = "Light the whole room",
+            LeftOptionResult = lightTheRoomResult,
+            RightOptionResult = lightTheRoomResult,
+            LeftOptionPossibleContinuations = new []{ lightRoom },
+            RightOptionPossibleContinuations = new []{ lightRoom }
+        };
+        var smallLight = new Card()
+        {
+            Text = "Your staff shines a bit brighter, but it can’t handle the darkness. You see how with each second the light begins to fade more and more.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/light"),
+            LeftOptionText = "Try to fight the darkness",
+            RightOptionText = "Try to cast a better spell",
+            LeftOptionResult = fightTheDarknessResult,
+            RightOptionResult = lightTheRoomResult,
+            LeftOptionPossibleContinuations = new[] { fight },
+            RightOptionPossibleContinuations = new[] { lightRoom }
+        };
+        var throneRoom = new Card()
+        {
+            Text = "This is it. Once you take a step into the throne room the evil energy surrounds you. It is dark. The darkest you’ve ever felt. You see some dark figure sitting on the throne, but you can’t even make a step without fearing that the dark will consume you.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"),
+            LeftOptionText = "Cast a small light",
+            RightOptionText = "Light the whole room",
+            LeftOptionResult = smallLightResult,
+            RightOptionResult = lightTheRoomResult,
+            LeftOptionPossibleContinuations = new Card[] { smallLight },
+            RightOptionPossibleContinuations = new Card[] { lightRoom }
+        };
+        
+        var towerFromKingsQuarters = new Card()
+        {
+            Text =
+                "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"),
+            LeftOptionText = "Summon ants",
+            RightOptionText = "Find a way out",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { kingsQuarters },
+            RightOptionPossibleContinuations = new[] { guardsRoomReStart }
+        };
+        kingsQuarters = new Card()
+        {
+            Text =
+                "It feels like the king was close to his servants as it is his room you are entering next. There’s a huge bed, though it lays barren. You can make out some fancy clothes lying around but nothing else. You’ve never felt this much evil energy. As if its source is in the next room",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kings"),
+            LeftOptionText = "Go left",
+            RightOptionText = "Go straight",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { throneRoom },
+            RightOptionPossibleContinuations = new[] { towerFromKingsQuarters },
+        };
+        servantsRoom = new Card()
+        {
+            Text = "You enter a room with lots of cots lying around. There’s some commonfolk clothes thrown in the mix. It seems like you are in the servants quarters. You feel as if you are almost there. ",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/servants"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new []{ kingsQuarters },
+            RightOptionPossibleContinuations = new []{ servantsTower }
+        };
+        var library = new Card()
+        {
+            Text = "You enter a library. You see huge shelves left with books for no one to appreciate. The evil energy feels even closer.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/library"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { archives },
+            RightOptionPossibleContinuations = new [] { servantsRoom }
+        };
+        var kitchenFromGuardsTower = new Card()
+        {
+            Text = "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"), 
+            LeftOptionText = "Summon ants",
+            RightOptionText = "Find a way out",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { kitchenFromGuards },
+            RightOptionPossibleContinuations = new []{ guardsRoomReStart }
+        };
+        var kitchenFromMainHallTower = new Card()
+        {
+            Text = "You see a room with a staircase, leading very high up. You believe it is one of the guarding towers of the castle. The evil energy is almost nonexistent here. The door behind you suddenly closes.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/kitchen"), 
+            LeftOptionText = "Summon ants",
+            RightOptionText = "Find a way out",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { kitchenFromMainHall },
+            RightOptionPossibleContinuations = new [] { guardsRoomReStart }
+        };
+        var guardsRoomFromMainHall = new Card()
+        {
+            Text =
+                "You enter a room. It's guardsmen room again. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            LeftOptionText = "Go straight",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            RightOptionPossibleContinuations = new[] { kitchenFromGuards },
+        };
+        var mainHallFromKitchen = new Card()
+        {
+            Text = "You enter a large room, with a long dining table sitting right in the middle. You guess it once was a place of joy and good. The evil energy feels closer than before. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            LeftOptionText = "Go straight",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new Card[] { library },
+            RightOptionPossibleContinuations = new Card[] { guardsRoomFromMainHall }
+        };
+        kitchenFromGuards = new Card()
+        {
+            Text = "You enter what seems to be the castle's kitchen. There’s no food here, so you can’t really hope to find a snack here. The evil energy is very faint here. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            LeftOptionText = "Go straight",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new Card[] { kitchenFromGuardsTower },
+            RightOptionPossibleContinuations = new Card[] { mainHallFromKitchen }
+        };
+        var guardsRoomFromKitchen = new Card()
+        {
+            Text =
+                "You enter a room. It's guardsmen room again. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint.",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { mainHallFromGuards },
+        };
+        kitchenFromMainHall = new Card()
+        {
+            Text = "You enter what seems to be the castle's kitchen. There’s no food here, so you can’t really hope to find a snack here. The evil energy is very faint here. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Turn right",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new Card[] { guardsRoomFromKitchen },
+            RightOptionPossibleContinuations = new Card[] { kitchenFromMainHallTower }
+        };
+        mainHallFromGuards = new Card()
+        {
+            Text = "You enter a large room, with a long dining table sitting right in the middle. You guess it once was a place of joy and good. The evil energy feels closer than before. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/kitchen"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Go straight",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new Card[] { kitchenFromMainHall },
+            RightOptionPossibleContinuations = new Card[] { library  }
+        };
+        var guardsRoomStart = new Card()
+        {
+            Text =
+                "You enter a room. By the look of it, it looks like a guardsmen room. The door behind you closes. You feel there’s something evil somewhere in the castle, but at this moment it’s very faint. ",
+            Sprite = Resources.Load<Sprite>("Arts/CardPictures/guards"),
+            LeftOptionText = "Turn left",
+            RightOptionText = "Go straight",
+            LeftOptionResult = walkingPenaltyResult,
+            RightOptionResult = walkingPenaltyResult,
+            LeftOptionPossibleContinuations = new[] { kitchenFromGuards },
+            RightOptionPossibleContinuations = new[] { mainHallFromGuards }
+        };
+        var bat11 = new Card()
+        {
+            Text =
+                "Walking around the castle you find a ditch. It is mostly dried up, but there’s a certain smell in the air. You use the ditch to get in the castle but your ego (and your boots) suffered some damage. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            LeftOptionText = "You are in the castle",
+            RightOptionText = "You are in the castle",
+            LeftOptionResult = bat11AnotherWayResult,
+            RightOptionResult = bat11AnotherWayResult,
+            LeftOptionPossibleContinuations = new[] { guardsRoomStart },
+            RightOptionPossibleContinuations = new[] { guardsRoomStart }
+        };
+        var bat1 = new Card()
+        {
+            Text =
+                "The main gate is closed, but you can see the lever controlling the gates. You can’t reach it with your hands.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/bat0"),
+            LeftOptionText = "Summon ants",
+            RightOptionText = "Find another way",
+            LeftOptionResult = bat1SummonResult,
+            LeftOptionPossibleContinuations = new[] { guardsRoomStart },
+            RightOptionPossibleContinuations = new[] { bat11 }
+        };
+        var bat0 = new Card()
+        {
+            Text =
+                "The portal brings you straight to the main gate of a grand old castle, forgotten in the Forest for millennia, or even more. Although, right now it does not feel empty or forgotten. There’s something evil inside and it is your job to check it out. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/BAT"), //TODO: ДОБАВИТЬ НАЗВАНИЯ ВСЕЙ ИСТОРИИ
+            Requirement = Unlockables.Ants,
+            ProgressionUnlock = Unlockables.Bats,
+            LeftOptionText = "Walk towards main gate",
+            RightOptionText = "Turn around",
+            RightOptionResult = bat0result,
+            LeftOptionPossibleContinuations = new []{ bat1 },
+        };
+        return bat0;
+    }
+
+    private static Card SetupDruidStory()
+    {
+        var druid3Result = new CardResult()
+        {
+            Hp = 5,
+            Mana = -30
+        };
+        var humResult = new CardResult()
+        {
+            Mana = 5,
+        };
+        var bearResult = new CardResult()
+        {
+            Unlockable = Unlockables.Mebeb
+        };
+        var beadEnding = new Card()
+        {
+            Text = "You’ve gained the ability to summon a bear!",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/bead"),
+            LeftOptionText = "Bearilliant",
+            RightOptionText = "Bearrific",
+        };
+        var wizard = new Card()
+        {
+            Text =
+                "The Druid is ecstatic to see its staff. You can see it in his eyes. \n\n- Thank you for your help! As a fellow druid, I can’t just let you go without a reward! Let me teach you the spell of how to summon a bear! \n",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid"),
+            LeftOptionText = "Thank you for your wisdom",
+            RightOptionText = "I guess if your companions don’t mind",
+            LeftOptionPossibleContinuations = new[] { beadEnding },
+            RightOptionPossibleContinuations = new[] { beadEnding }
+        };
+        var bat2 = new Card()
+        {
+            Text =
+                "It does not take long for the bat to return, holding the lost staff in its claws. Even if it almost drops it a few times, you don’t say anything. In the end, you have the staff in your hands.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            LeftOptionText = "Thank you, Bat",
+            RightOptionText = "Let’s get it back to its owner",
+            LeftOptionPossibleContinuations = new Card[] { wizard },
+            RightOptionPossibleContinuations = new Card[] { wizard }
+        };
+        var bat0 = new Card()
+        {
+            Text = "The Bat appears right beside you, chirping happily. It knows what it needs to do. As it flies away, you sit on a tree stamp nearby and wait.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            LeftOptionText = "Wait patiently",
+            RightOptionText = "Hum a song",
+            RightOptionResult = humResult,
+            LeftOptionPossibleContinuations = new[] { bat2 },
+            RightOptionPossibleContinuations = new[] { bat2 }
+        };
+        var staffToBatResult = new CardResult()
+        {
+            Hp = -10,
+            Mana = -30
+        };
+        var goOutResult = new CardResult()
+        {
+            Hp = -30,
+            Mana = -50
+        };
+        var staff = new Card()
+        {
+            Text = "It’s been almost a day since you started searching for the staff. You are tired, angry and honestly just hungry. Becoming a part of faes prank was not in your daily schedule. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/Batstory"),
+            LeftOptionText = "I guess I have no choice but to summon the bat.",
+            RightOptionText = "The wizard will have to find his staff himself, I am leaving.",
+            LeftOptionResult = staffToBatResult,
+            RightOptionResult = goOutResult,
+            LeftOptionPossibleContinuations = new[] { bat0 },
+        };
+        var druid3 = new Card()
+        {
+            Text =
+                "Leaving a cave you know that searching for a lost staff is not that easy. It may take quite some time before the task is finished.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid"),
+            LeftOptionText = "I choose you, Bat!",
+            RightOptionText = "I will search for the staff myself",
+            LeftOptionResult = druid3Result,
+            LeftOptionPossibleContinuations = new[] { bat0 },
+            RightOptionPossibleContinuations = new[] { staff }
+        };
+        var druid2 = new Card()
+        {
+            Text = "- There I was, just wandering about this majestic forest when suddenly, there was a weird flash and I woke up here! I may have been struck by misbehaving faes around here. Who knows! The bears were kind enough to let me rest and catch my breath, but I can’t seem to find my staff! Would you be so kind as to help me?",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid2"),
+            LeftOptionText = "It is my job to help my fellow wizard!",
+            RightOptionText = "Why is it always me that must help?...",
+            LeftOptionPossibleContinuations = new[] { druid3 },
+            RightOptionPossibleContinuations = new[] { druid3 }
+        };
+        var druid1 = new Card()
+        {
+            Text =
+                "And there the Lone Druid was, surrounded by at least two large brown bears, sitting in the farthest corner of the cave. You can’t see him clearly but feel that he knows you are here. \n\n- Another wizard? How splendid! I was wondering when someone would notice me. Don’t mind my friends, they are just a tad bit protective!",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid1"),
+            LeftOptionText = "Greetings!",
+            RightOptionText = "Why do wizards always end up in weird situations?",
+            LeftOptionPossibleContinuations = new[] { druid2 },
+            RightOptionPossibleContinuations = new[] { druid2 }
+        };
+        var druid0 = new Card()
+        {
+            Text =
+                "Once you are in a cave you suddenly understand why there’s magic here. Another wizard, a druid, is here. You don’t know who or why, but you feel the need to be cautious.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid0"),
+            Requirement = Unlockables.Bats,
+            ProgressionUnlock = Unlockables.Mebeb,
+            LeftOptionText = "Proceed forth",
+            RightOptionText = "Proceed forth",
+            LeftOptionPossibleContinuations = new[] { druid1 },
+            RightOptionPossibleContinuations = new[] { druid1 }
+        };
+        return druid0;
+    }
+
+    private static Card SetupJabaStory()
+    { 
+        var summonBearResult = new CardResult()
+        {
+            Mana = -30
+        };
+        var walkThroughResult = new CardResult()
+        {
+            Hp = -15
+        };
+        var askFrogResult = new CardResult()
+        {
+            Hp = -5
+        };
+        var sitFrogResult = new CardResult()
+        {
+            Mana = -5,
+        };
+        var bearSummonEnding = new CardResult()
+        {
+            Mana = -20,
+            Hp = -20
+        };
+        var sleepResult = new CardResult()
+        {
+            Mana = 20,
+            Hp = 20
+        };
+        var jabaEndingResult = new CardResult()
+        {
+            Unlockable = Unlockables.Jaba,
+        };
+        var jabaEnding = new Card()
+        {
+            Text = "You’ve gained the ability to summon a frog!",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid0"),
+            LeftOptionText = "Kwa-kwa",
+            RightOptionText = "Ribbit-ribbit",
+            LeftOptionResult = jabaEndingResult,
+            RightOptionResult = jabaEndingResult
+        };
+        var sleep = new Card()
+        {
+            Text = "You wake up feeling well rested. The unease that brought you here is no longer there. You open your eyes and the giant frog is also no longer there. You feel as if it was a lesson in patience.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/druid0"),
+            LeftOptionText = "I guess it is time to get out of the black forest",
+            RightOptionText = "Never question wisdom of a frog, huh",
+            LeftOptionPossibleContinuations = new[] { jabaEnding },
+            RightOptionPossibleContinuations = new[] { jabaEnding }
+        };
+        var jabaSit3 = new Card()
+        {
+            Text = "It’s dark now. You feel tired. Your eyes are slowly closing. You need to decide what to do. The frog still has not moved even an inch.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Whatever, I am leaving",
+            RightOptionText = "I’ll sleep here",
+            RightOptionResult = sleepResult,
+            RightOptionPossibleContinuations = new[] { sleep },
+        };
+        var bearSummon = new Card()
+        {
+            Text = "Bear truly tries to move the frog. He fails.The frog gets angry. One moment you are standing next to the frog, the next moment you are literally flying out of the dark forest borders. The frog did not like you.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Better luck next time",
+            RightOptionText = "I guess we were bugging it too much",
+            LeftOptionResult = bearSummonEnding,
+            RightOptionResult = bearSummonEnding,
+        };
+        var jabaSit2 = new Card()
+        {
+            Text = "It’s been hours since you first got here. You’ve been sitting. Just sitting. Nothing is happening around you and you still can’t get past that frog.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Summon a bear",
+            RightOptionText = "Continue sitting",
+            LeftOptionResult = summonBearResult,
+            RightOptionResult = sitFrogResult,
+            LeftOptionPossibleContinuations = new [] { bearSummon },
+            RightOptionPossibleContinuations = new[] { jabaSit3 }
+            
+        };
+        var spell = new Card()
+        {
+            Text = "You try to use a simple spell. It literally bounces back from the frog, moving a nearby log. The frog continues to sit.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Summon a bear",
+            RightOptionText = "Continue sitting",
+            LeftOptionResult = summonBearResult,
+            RightOptionResult = sitFrogResult,
+            LeftOptionPossibleContinuations = new[] { bearSummon },
+            RightOptionPossibleContinuations = new[] { jabaSit2 }
+        };
+        var jabaSit = new Card()
+        {
+            Text =
+                "You sit next to the frog. You do not feel anything change. The frog continues to sit in your way, motionless.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Try to move the frog with a spell",
+            RightOptionText = "Sit next to the frog",
+            RightOptionResult = sitFrogResult,
+            LeftOptionPossibleContinuations = new[] { spell },
+            RightOptionPossibleContinuations = new[] { jabaSit2 }
+        };
+        Card jabaAsk = null;
+        var jabaAskAgain = new Card()
+        {
+            Text = "The frog still sits. Unmoved. You are not sure even if it heard you.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Ask the frog to move ",
+            RightOptionText = "Sit next to the frog",
+            LeftOptionResult = askFrogResult,
+            RightOptionResult = sitFrogResult,
+            LeftOptionPossibleContinuations = new[] { jabaAsk },
+            RightOptionPossibleContinuations = new[] { jabaSit }
+        };
+        jabaAsk = new Card()
+        {
+            Text = "The frog continues to sit. Unmoved. You are not sure even if it heard you.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Ask the frog to move ",
+            RightOptionText = "Sit next to the frog",
+            LeftOptionResult = askFrogResult,
+            RightOptionResult = sitFrogResult,
+            LeftOptionPossibleContinuations = new []{ jabaAskAgain },
+            RightOptionPossibleContinuations = new[] { jabaSit }
+        };
+        var jaba3 = new Card()
+        {
+            Text = "Each step you take makes you feel closer to whatever it is you are looking for. And now, there’s a giant frog sitting in your way. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Ask the frog to move ",
+            RightOptionText = "Sit next to the frog",
+            LeftOptionResult = askFrogResult,
+            RightOptionResult = sitFrogResult,
+            LeftOptionPossibleContinuations = new []{ jabaAsk },
+            RightOptionPossibleContinuations = new[] { jabaSit }
+        };
+        var jaba2 = new Card()
+        {
+            Text = "You stumble upon another thorny path. It’s not as bad as the previous one, you think you can pass through with no troubles.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba2"),
+            LeftOptionText = "Summon bear",
+            RightOptionText = "Walk through",
+            LeftOptionResult = summonBearResult,
+            RightOptionResult = walkThroughResult,
+            LeftOptionPossibleContinuations = new[] { jaba3 },
+            RightOptionPossibleContinuations = new[] { jaba3 }
+        };
+        var walkForwardResult = new CardResult()
+        {
+            Hp = 5,
+            Mana = -10
+        };
+
+        var walk = new Card()
+        {
+            Text =
+                "You feel as if you’ve been walking for hours and not even a step closer to that weird sensation of imbalance you felt earlier. As if the forest does not want you here. Suddenly you walk out on a sunny field. You hear birds, see flowers, as if you were not just in the middle of a dark forest. The path continues forward. Do you follow it?",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba2"),
+            LeftOptionText = "Walk forward",
+            RightOptionText = "Go back into the forest",
+            LeftOptionResult = walkForwardResult,
+            RightOptionPossibleContinuations = new[] { jaba2 },
+        };
+        var jaba1 = new Card()
+        {
+            Text = "Bear manages to strike through all of the thorns, leaving you a nice little path to follow. The search continues.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"),
+            LeftOptionText = "Walk forward",
+            RightOptionText = "Walk forward",
+            LeftOptionPossibleContinuations = new[] { jaba2 },
+            RightOptionPossibleContinuations = new[] { jaba2 }
+        };
+        var walkResult = new CardResult()
+        {
+            Hp = -20, Mana = -10
+        };
+        var jaba0 = new Card()
+        {
+            Text =
+                "The more you traverse through dark forest, the more it seems impossible to take another step. Your path is blocked by a literal wall of thorns, you don’t believe you can just walk through it. ",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/jaba"), //TODO: ПОМЕНЯТЬ НАЗВАНИЕ ВО ВСЕЙ ИСТОРИИ
+            Requirement = Unlockables.Mebeb,
+            ProgressionUnlock = Unlockables.Jaba,
+            LeftOptionText = "Try to walk around the wall",
+            RightOptionText = "Summon bear",
+            LeftOptionResult = walkResult,
+            RightOptionResult = summonBearResult,
+            LeftOptionPossibleContinuations = new[] { jaba1 },
+            RightOptionPossibleContinuations = new[] { walk }
+        };
+        return jaba0;
+    }
     /*
      
      
@@ -543,7 +1197,7 @@ public class DeckSetup
 
         var storyResult = new CardResult()
         {
-            Unlockable = Unlockables.Bober,
+            Unlockable = Unlockables.Mebeb,
             Hp = -20,
             Mana = -50,
         };
@@ -551,7 +1205,7 @@ public class DeckSetup
         {
             Text = "ЭТО СУПЕРРОФЛЗ. ОЧКО",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Rofls"),
-            ProgressionUnlock = Unlockables.Bober,
+            ProgressionUnlock = Unlockables.Mebeb,
             RightOptionResult = storyResult,
             LeftOptionResult = storyResult
         };
@@ -559,7 +1213,7 @@ public class DeckSetup
         {
             Text = "Это рофлз. Справа еще больше. Слева боюсь рофлзов",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/Rofls"),
-            ProgressionUnlock = Unlockables.Bober,
+            ProgressionUnlock = Unlockables.Mebeb,
             RightOptionPossibleContinuations = new[] { storyCardEnd },
             LeftOptionText = "СТРАШНО",
             RightOptionText = "БОЛЬШЕ",
@@ -567,16 +1221,16 @@ public class DeckSetup
 
         var story2Result = new CardResult()
         {
-            Unlockable = Unlockables.Orel,
+            Unlockable = Unlockables.Bats,
             Hp = 10,
             Mana = 25,
         };
         var storyCard2 = new Card()
         {
-            Requirement = Unlockables.Bober,
+            Requirement = Unlockables.Mebeb,
             Text = "Если ты здесь, значит прошел рофлз вправо и получил очко. Молодец",
             Sprite = Resources.Load<Sprite>("Arts/CardPictures/MgeMachinegunner"),
-            ProgressionUnlock = Unlockables.Orel,
+            ProgressionUnlock = Unlockables.Bats,
             LeftOptionResult = story2Result,
             RightOptionResult = story2Result,
             LeftOptionText = "ЕЕЕЕЕЕЕЕЕЕЕЕЕЕ",

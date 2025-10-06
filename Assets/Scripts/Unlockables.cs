@@ -1,6 +1,7 @@
 ﻿public static class Unlockables
 {
-    public static string Bober = "bober";
-    public static string Orel = "orel";
+    public static string Mebeb = "mebeb";
+    public static string Bats = "bats";
     public static string Ants = "ants";
+    public static string Jaba = "jaba";
 }

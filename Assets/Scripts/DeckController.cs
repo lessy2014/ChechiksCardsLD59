@@ -19,7 +19,7 @@ public class DeckController : MonoBehaviour
     private Card HealthResetCard { get; set; }
     private Card ManaResetCard { get; set; }
     private HashSet<string> Unlockables { get; set; } = new();
-    private string lastUnlockable = global::Unlockables.Orel;
+    private string lastUnlockable = global::Unlockables.Jaba;
     
     [SerializeField] private TextMeshPro CardText;
     [SerializeField] private SpriteRenderer CardPicture;
@@ -38,9 +38,9 @@ public class DeckController : MonoBehaviour
         HealthResetCard = resetCards.Item1;
         ManaResetCard = resetCards.Item2;
 
-        var debugCards = DeckSetup.DebugSetup();
-        RandomStartCards = debugCards.Item1;
-        StoryStartCards = debugCards.Item2;
+        // var debugCards = DeckSetup.DebugSetup();
+        // RandomStartCards = debugCards.Item1;
+        // StoryStartCards = debugCards.Item2;
 
         var normalCards = DeckSetup.Setup();
         RandomStartCards = normalCards.Item1;
