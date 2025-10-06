@@ -123,7 +123,7 @@ public class DeckSetup
         {
             Text =
                 "As soon as you enter the cave you hear a loud snore vibrating through the cave. There’s a troll sleeping right in the middle of the cave. You think you see something past the giant sleeping figure and something tells you to check it out.",
-            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/TROLL SLEEPING "),
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/TROLL SLEEPING"),
             LeftOptionText = "Sneak past",
             RightOptionText = "Teleport through",
             LeftOptionPossibleContinuations = new []{ cave11Sneak },
@@ -770,14 +770,23 @@ public class DeckSetup
             Text =
                 "The portal brings you straight to the main gate of a grand old castle, forgotten in the Forest for millennia, or even more. Although, right now it does not feel empty or forgotten. There’s something evil inside and it is your job to check it out. ",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/MAIN GATE"), //TODO: ДОБАВИТЬ НАЗВАНИЯ ВСЕЙ ИСТОРИИ
-            Requirement = Unlockables.Ants,
-            ProgressionUnlock = Unlockables.Bats,
             LeftOptionText = "Walk towards main gate",
             RightOptionText = "Turn around",
             RightOptionResult = bat0result,
             LeftOptionPossibleContinuations = new []{ bat1 },
         };
-        return bat0;
+        var bat0minus = new Card()
+        {
+            Text =
+                "There’s a portal right before you. How did it manage to appear here and why does not matter, it matters only that it’s blocking your path.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/PORTAL"),
+            Requirement = Unlockables.Ants,
+            ProgressionUnlock = Unlockables.Bats,
+            LeftOptionText = "Walk through the portal",
+            RightOptionText = "Wizarding 101 - Do not walk through random portals. Turn around and find another way.",
+            LeftOptionPossibleContinuations = new[] { bat0 },
+        };
+        return bat0minus;
     }
 
     private static Card SetupDruidStory()
@@ -887,14 +896,24 @@ public class DeckSetup
             Text =
                 "Once you are in a cave you suddenly understand why there’s magic here. Another wizard, a druid, is here. You don’t know who or why, but you feel the need to be cautious.",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE DRUID 1"),
-            Requirement = Unlockables.Bats,
-            ProgressionUnlock = Unlockables.Mebeb,
             LeftOptionText = "Proceed forth",
             RightOptionText = "Proceed forth",
             LeftOptionPossibleContinuations = new[] { druid1 },
             RightOptionPossibleContinuations = new[] { druid1 }
         };
-        return druid0;
+
+        var druid0Minus = new Card()
+        {
+            Text =
+                "You see a cave. You’d think there was nothing strange with it. Expect that you feel some magic there. Magic that is not yours or your Masters.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/CAVE BAT"),
+            Requirement = Unlockables.Bats,
+            ProgressionUnlock = Unlockables.Mebeb,
+            LeftOptionText = "Check the source",
+            RightOptionText = "I’ll let Master deal with it",
+            LeftOptionPossibleContinuations = new[] { druid0 },
+        };
+        return druid0Minus;
     }
 
     private static Card SetupJabaStory()
@@ -1078,8 +1097,6 @@ public class DeckSetup
             Text =
                 "The more you traverse through dark forest, the more it seems impossible to take another step. Your path is blocked by a literal wall of thorns, you don’t believe you can just walk through it. ",
             Sprite = Resources.Load<Sprite>($"Arts/CardPictures/THORNS"), //TODO: ПОМЕНЯТЬ НАЗВАНИЕ ВО ВСЕЙ ИСТОРИИ
-            Requirement = Unlockables.Mebeb,
-            ProgressionUnlock = Unlockables.Jaba,
             LeftOptionText = "Try to walk around the wall",
             RightOptionText = "Summon bear",
             LeftOptionResult = walkResult,
@@ -1087,7 +1104,18 @@ public class DeckSetup
             LeftOptionPossibleContinuations = new[] { jaba1 },
             RightOptionPossibleContinuations = new[] { walk }
         };
-        return jaba0;
+        var jaba0minus = new Card()
+        {
+            Text =
+                "You are walking near the border of a dark forest, where tree crowns are so close together, that you almost can’t see any light piercing through them. You feel there is something off balance there.",
+            Sprite = Resources.Load<Sprite>($"Arts/CardPictures/DARK FOREST"),
+            Requirement = Unlockables.Mebeb,
+            ProgressionUnlock = Unlockables.Jaba,
+            LeftOptionText = "You step into the forest",
+            RightOptionText = "You turn around and let the path take you elsewhere",
+            LeftOptionPossibleContinuations = new[] { jaba0 }
+        };
+        return jaba0minus;
     }
     /*
      
